@@ -1,5 +1,6 @@
 <script setup>
 import {ref, onMounted} from 'vue'
+import {RouterLink} from 'vue-router'
 import Todo from './Todo.vue';
 import Album from './Album.vue';
 import Posts from './Posts.vue';
@@ -10,7 +11,8 @@ import Posts from './Posts.vue';
   <div>
     
     <div id="user-nav">
-      <p>Details for User Id: {{ $route.params.id }} / <router-link to="/">Go to Home</router-link></p>
+      <h3>Details for User Id: {{ $route.params.id }}</h3>
+      <RouterLink to="/">Home</RouterLink>
     </div>
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
