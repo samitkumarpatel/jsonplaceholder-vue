@@ -14,17 +14,25 @@ import { useRoute } from 'vue-router'
         .catch(e => console.log(e))
     })
 
-    const commentsById = async (postId) => {
+    const commentsById = (postId) => {
         fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
             .then(r => r.json())
-            .then(r => selectedPost[postId].comments = r)
+            .then(r => selectedPost.value[postId] = {...selectedPost.value[postId], 'comments': r})
+    }
+
+    const collapseController = (postId) => {
+        selectedPost.value[postId]?.collapse ? selectedPost.value[postId].collapse = false : selectedPost.value[postId] = {'collapse': true}
+        if(selectedPost.value[postId]?.collapse) {
+            commentsById(postId)
+        }
+        
     }
 
 </script>
 
 <template>
-    <div v-for="post in posts" data-bs-toggle="collapse" :href="'#collapseExample-'+post.id" role="button" aria-expanded="false" :aria-controls="'collapseExample-'+post.id" @click="() => selectedPost[post.id]?.collapse ? selectedPost[post.id].collapse = false : selectedPost[post.id] = { collapse: true }">
-        <p>
+    <div v-for="post in posts" data-bs-toggle="collapse" :href="'#collapseExample-'+post.id" role="button" aria-expanded="false" :aria-controls="'collapseExample-'+post.id" @click="collapseController(post.id)">
+        <p class="post">
             <i class="bi bi-file-minus h2" v-if="selectedPost[post.id]?.collapse"></i>
             <i class="bi bi-file-plus h2" v-else></i>
              {{ post.title }}
@@ -34,14 +42,14 @@ import { useRoute } from 'vue-router'
                 {{ post.body }}.
             </div>
             <div class="card card-body">
-                <p v-if="selectedPost[post.id]?.collapse">comments... </p>
+                <p v-for="c in selectedPost[post.id]?.comments">{{ c }}</p>
             </div>
         </div>
     </div>
     
 </template>
 <style scoped>
-p:hover {
+p.post:hover {
     /* background-color: gray;
     color: white; */
     border-bottom: 1px solid gray;
