@@ -35,14 +35,23 @@ import { useRoute } from 'vue-router'
         <p class="post">
             <i class="bi bi-file-minus h2" v-if="selectedPost[post.id]?.collapse"></i>
             <i class="bi bi-file-plus h2" v-else></i>
-             {{ post.title }}
+            <span :class="selectedPost[post.id]?.collapse ? 'fst-italic' : ''">{{ post.title }}</span>
         </p>
         <div class="collapse" :id="'collapseExample-'+post.id">
             <div class="card card-header">
                 {{ post.body }}.
             </div>
             <div class="card card-body">
-                <p v-for="c in selectedPost[post.id]?.comments">{{ c }}</p>
+                <figure v-for="c in selectedPost[post.id]?.comments">
+                    <blockquote class="blockquote">
+                        <p>{{ c.body }}</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        {{ c.name }} <cite title="Source Title">{{ c.email }}</cite>
+                    </figcaption>
+                </figure>
+
+                
             </div>
         </div>
     </div>
