@@ -42,6 +42,7 @@ import { useRoute } from 'vue-router'
                 {{ post.body }}.
             </div>
             <div class="card card-body">
+                <h5>Comments</h5>
                 <figure v-for="c in selectedPost[post.id]?.comments">
                     <blockquote class="blockquote">
                         <p>{{ c.body }}</p>
