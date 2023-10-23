@@ -21,7 +21,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ album.id }}</h5>
                     <p class="card-text">{{ album.title }}</p>
-                    <a href="#" class="btn btn-primary" @click="() => this.$router.push(`/album/${album.id}/photo`)">Photos</a>
+                    <a href="#" class="btn btn-primary" @click="() => $router.push(`/album/${album.id}/photo`)">Photos</a>
                 </div>
             </div>
         </div>

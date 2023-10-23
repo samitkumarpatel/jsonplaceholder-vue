@@ -15,7 +15,7 @@
 </script>
 <template>
     <h3>Photo {{ albumId }}</h3>
-    <p @click="() => this.$router.back()">Back</p>
+    <p @click="() => $router.back()">Back</p>
     <img v-for="photo in photos" :src="photo.thumbnailUrl" class="img-thumbnail" :alt="photo.title">
 </template>
 <style scoped>

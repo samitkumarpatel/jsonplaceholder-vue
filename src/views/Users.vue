@@ -18,7 +18,7 @@
         <tr v-for="user in users">
           <td v-for="k in Object.keys(user)">{{ user[k] }}</td>
           <td>
-            <button class="btn btn-info" @click="() => this.$router.push(`/user/${user.id}`)">
+            <button class="btn btn-info" @click="() => $router.push(`/user/${user.id}`)">
               <i class="bi bi-arrow-right-short"></i>
             </button>
           </td>
