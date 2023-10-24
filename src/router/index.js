@@ -5,7 +5,6 @@ import Photo from '../views/Photo.vue'
 import NotFound from '../views/NotFound.vue'
 
 const router = createRouter({
-  mode: 'hash',
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
