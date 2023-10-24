@@ -1,10 +1,12 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import Users from '../views/Users.vue'
 import User from '../views/User.vue'
 import Photo from '../views/Photo.vue'
+import NotFound from '../views/NotFound.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  mode: 'hash',
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
@@ -21,7 +23,7 @@ const router = createRouter({
       name: 'albums-photo',
       component: Photo
     },
-    { path: '/:pathMatch(.*)*', name: 'users', component: Users }
+    { path: '/:pathMatch(.*)*', name: 'notfound', component: NotFound }
   ]
 })
 
