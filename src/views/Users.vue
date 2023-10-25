@@ -1,7 +1,5 @@
 <script setup>
   import {ref, onMounted} from 'vue'
-  import { userStore } from '../stores/users'
-
   const users = ref([])
   const err = ref('')
 
@@ -12,6 +10,7 @@
     .catch(e => err.value=e)
 
   })
+
 </script>
 
 <template>

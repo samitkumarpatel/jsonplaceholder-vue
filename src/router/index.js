@@ -22,6 +22,7 @@ const router = createRouter({
       name: 'albums-photo',
       component: Photo
     },
+    { path: '/404', name: 'notfound', component: NotFound },  
     { path: '/:pathMatch(.*)*', name: 'notfound', component: NotFound }
   ]
 })
